@@ -1,0 +1,202 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: 'Poppins', sans-serif;
+}
+.fullPage{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c3c3b2;
+}
+
+.regContainer{
+    display: flex;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 15px;
+}
+.regContainer .imageCont{
+    width: 350px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#c3c3b2;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.618);
+}
+
+.inputBox{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.inputBox label{
+    font-size: 14px;
+    font-weight: 500;
+    text-align: start;
+    color: rgb(30, 30, 30);
+}
+.inputBox input, .inputBox textarea, .inputBox select{
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: black;
+    background-color: white;
+}
+.inputBox input:focus, .inputBox textarea:focus, .inputBox select:focus{
+    border-color: rgb(74, 2, 126);
+    outline: none;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+}
+
+
+.buttons .cancel{
+    background-color: #ffffff;
+    border: 2px solid #999;
+    padding: 9px 30px;
+    color: #333;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.295);
+}
+.buttons .post{
+    background-color: rgb(74, 2, 126);
+    padding: 10px 30px;
+    color: white;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.477);
+}
+
+.regContainer .formCont{
+    width: 500px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.regContainer .formCont form{
+   width: 70%;
+}
+form h1{
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgb(30, 30, 30);
+    font-size: 30px;
+    font-weight: 600;
+}
+form .sign{
+    font-size: 13px;
+    color: rgb(30, 30, 30);
+    
+    margin-top: 10px;
+}
+.google{
+    width: 100%;
+    /* height: 40px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ccc;
+
+}
+.google .google1{
+    width: 48%;
+    height: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.google .google1:hover{
+    background-color: rgb(208, 84, 2);
+}
+.google .google1:hover h5{
+    color: white;
+}
+.google .google1 h5{
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(30, 30, 30);
+}
+
+.dont{
+    font-size: 13px;
+    color: rgb(30, 30, 30);
+    text-align: center;
+    margin-top: 20px;
+}
+.dont .link{
+    color: rgb(208, 84, 2);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+@media(max-width:768px){
+    .fullPage {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        padding: 20px 0;
+    }
+
+    .regContainer {
+        flex-direction: column;
+        align-items: center;
+        width: 95vw;
+        padding: 10px;
+        margin-bottom: 70px;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    .regContainer .imageCont {
+        width: 90vw;
+        max-width: 350px;
+        height: 200px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.15);
+    }
+
+        .regContainer .formCont {
+        width: 100%;
+        padding: 20px 0;
+        box-shadow: 0 0 10px rgba(0,0,0,0.08);
+        background: #fff;
+        border-radius: 12px;
+    }
+
+    .regContainer .formCont form {
+        width: 90%;
+        margin: 0 auto;
+    }
+}

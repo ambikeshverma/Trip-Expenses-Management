@@ -1,0 +1,23 @@
+{
+  "name": "trip-expenses-management",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "frontend": "cd frontend && npm run dev",
+    "backend": "cd backend && npm run dev",
+    "dev": "concurrently -n \"frontend,backend\" -c \"cyan,yellow\" \"npm run frontend\" \"npm run backend\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.3.2",
+    "concurrently": "^9.2.1",
+    "framer-motion": "^12.23.12",
+    "recharts": "^3.2.0"
+  }
+}

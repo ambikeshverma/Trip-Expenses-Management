@@ -1,0 +1,88 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.dashboardPage{
+    width: 100vw;
+    min-height: 100vh;
+    background-color: rgb(225, 239, 251);
+    padding: 30px;
+}
+.trip-link {
+  text-decoration: none;
+  color: inherit;
+}
+.tripList{
+   display: flex;
+   flex-wrap: wrap;
+   gap: 30px;
+}
+.dashboardData{
+    display: flex;
+    justify-content: space-around;
+}
+.dashdataBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 250px;
+    height: 80px;
+    /* border: 1px solid gray; */
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.59);
+    background-color: white;
+}
+.totalTrip h2{
+    color: rgb(56, 1, 138);
+}
+.totalBalance h2{
+    color: green;
+}
+.totalExpenses h2{
+   color: rgb(255, 94, 0);
+}
+.tripHeading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    margin: 40px 0px;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 10px 0px;
+    width: 100%;
+    background-color:#1F8952;
+}
+.tripHeading h4{
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.73);
+}
+.createTripbtn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.createTripbtn button{
+    display: flex;
+    gap: 6px;
+    padding: 15px 20px;
+    background-color: #9B1357;
+    border-radius: 8px;
+    color: white;
+    border: 2px solid transparent;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all ease-in 150ms;
+}
+.createTripbtn button:hover{
+    background-color: white;
+    color: #9B1357;
+    border: 2px solid #9B1357;
+}

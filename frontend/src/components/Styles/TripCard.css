@@ -1,0 +1,78 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.cardCont{
+    width: 300px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.649);
+    position: relative;
+}
+.tripDate1{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 4px;
+    padding: 2px 5px;
+    border-radius: 5px;
+    background-color: white;
+}
+.imageBox{
+    width: 100%;
+    overflow: hidden;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imageBox img{
+   width: 300px;
+   transition: all ease-in 300ms;
+}
+.imageBox img:hover{
+    transform: scale(1.09);
+}
+.dataCont{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px;
+}
+.tripTitle{
+    color: rgb(1, 101, 34);
+}
+.moneyData{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.moneyData div{
+    display: flex;
+    gap: 6px;
+}
+.memberBtn{
+    display: flex;
+    justify-content: space-between;
+}
+.memberBtn div{
+    display: flex;
+    gap: 7px;
+}
+.memberBtn button{
+    padding: 8px 10px;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.681);
+    background-color: rgb(1, 141, 196);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}

@@ -1,0 +1,204 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.tripSpecificPage{
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: rgb(205, 228, 248);
+}
+.containerPart1 {
+    width: 60vw;
+    max-width: 700px;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.tripPageCard{
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+}
+.tripCoverPhoto{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 200px;
+    border-radius: 7px;
+    border: 2px solid gray;
+}
+
+.dataCont3{
+    width: 100%;
+    padding: 14px 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid gray;
+}
+.dataCont3 .location{
+    display: flex;
+    gap: 5px;
+}
+.dataCont3 .tripDate{
+     display: flex;
+    gap: 5px;
+}
+.dataCont3 h4{
+    font-weight: 400;
+    color: rgb(119, 119, 119);
+}
+.notiBox{
+    width: 100%;
+    max-width: 700px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: end;
+}
+.searchBarCont{
+    width: 100%;
+    max-width: 700px;
+}
+.expenseCard{
+    width: 100%;
+    max-width: 700px;
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 2px solid gray;
+    border-radius: 8px;
+}
+.expenseCard button{
+    width: 100%;
+    padding: 10px 0px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    background-color: #E82143;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+.expenseCard .detailCard{
+    background-color: white;
+    box-shadow: 0px 0px 3px black;
+}
+.detailCard .total{
+    border-bottom: 1px solid gray;
+    padding: 10px 10px;
+}
+.detailCard .ExpenseSum{
+    border-bottom: 1px solid gray;
+    padding: 10px 10px;
+}
+.detailCard .Stats{
+    border-bottom: 1px solid gray;
+    padding: 10px 10px;
+}
+.containerPart2 {
+    width: 28vw;
+    max-width: 350px;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.BalanceSum{
+    width: 100%;
+    max-width: 350px; 
+    border: 2px solid gray;
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+.sumData{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    align-items: center;
+    padding: 7px 0px;
+    border-bottom: 1px solid gray;
+}
+.contriData{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.totalExpenseData{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.headData1{
+    color: rgb(1, 59, 183);
+}
+.headData2{
+    color: #E82143;
+}
+.balanceData{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+.headData3{
+    color: rgb(1, 161, 1);
+}
+.BalanceSum button{
+    width: 100%;
+    padding: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    color: white;
+    background-color: green;
+    font-weight: bold;
+    cursor: pointer;
+}
+.membersCard{
+    width: 100%;
+    max-width: 350px;
+    padding: 10px;
+    border: 2px solid gray;
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+.membersCard .member{
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    border-bottom: 1px solid gray;
+}
+@media(max-width:700px){
+    .containerPart2{
+        width: 100%;
+    }
+    .tripSpecificPage{
+        flex-direction: column;
+    }
+}

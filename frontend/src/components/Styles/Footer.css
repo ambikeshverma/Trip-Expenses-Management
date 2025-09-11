@@ -1,0 +1,39 @@
+*{
+    padding: 0px;
+    margin: 0;
+    box-sizing: border-box;
+}
+.footerCont{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: end;
+    align-items: center;
+    background-color: rgb(31, 31, 31);
+}
+.blackFooter{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: white;
+}
+.copyRigth{
+    text-align: center;
+    width: 100%;
+    padding: 7px;
+    background-color: white;
+    color: rgb(78, 78, 78);
+}
+@media(max-width:600px){
+    .blackFooter{
+        font-size: 10px;
+    }
+    .copyRigth{
+        font-size: 13px;
+    }
+}
