@@ -16,7 +16,7 @@ const CreateTripForm = ({token}) => {
       await api.post('http://localhost:3000/api/trips', { title }, { headers: { Authorization: 'Bearer ' + token }});
       setTitle('');
       toast.success('New Trip is created Successfully');
-      navigate("/dashboard")
+      navigate("/")
     } catch (err) {
       toast.error(err?.response?.data?.msg || "Failed to create trip");
     }

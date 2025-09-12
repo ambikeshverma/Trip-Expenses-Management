@@ -10,9 +10,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Home from './components/Home';
 import Dashboard from './components/Dashboard';
 import CreateTripForm from './components/CreateTripForm';
-import AddMoneyForm from './components/AddMoneyForm';
-import AddExpenseForm from './components/AddExpenseForm';
 import Stats from './components/Stats';
+import Nav from './components/Nav';
 
 export default function App(){
   const [token, setToken] = useState(localStorage.getItem('token') || '');
@@ -26,35 +25,26 @@ export default function App(){
     } else {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
+      setToken(null);
+      setUser(null);
     }
   }, [token, user]);
 
-  
 
   return (
     <div className="container">
-      {/* <nav>
-        <Link to="/">Home</Link>
-        {token ? <>
-          <span>Welcome {user?.username}</span>
-          <button onClick={logout}>Logout</button>
-        </> : <>
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
-        </>}
-      </nav> */}
-
+     
       <Routes>
-        <Route path='/' element={<Home></Home>}/>
-        <Route path="/dashboard" element={<ProtectedRoute><Dashboard token={token}/></ProtectedRoute>} />
-        <Route path="/createTrip" element={<ProtectedRoute><CreateTripForm token={token}/></ProtectedRoute>} />
-        <Route path="/triplist" element={<ProtectedRoute><TripList token={token} /></ProtectedRoute>} />
+        <Route path='/home' element={<Home></Home>}/>
         <Route path="/register" element={<Register setToken={setToken} setUser={setUser} />} />
         <Route path="/login" element={<Login setToken={setToken} setUser={setUser} />} />
-        <Route path="/trips/:id" element={<TripPage token={token} />} />
-        <Route path="/addMoney" element={<AddMoneyForm token={token}/>} />
-        <Route path="/addExpense" element={<AddExpenseForm token={token}/>} />
-         <Route path="/stats" element={<Stats token={token}></Stats>} />
+        <Route element={<ProtectedRoute token={token}></ProtectedRoute>}> 
+           <Route path="/" element={<Dashboard token={token}/>} />
+           <Route path="/createTrip" element={<CreateTripForm token={token}/>} />
+           <Route path="/triplist" element={<TripList token={token} />} />
+           <Route path="/trips/:id" element={<TripPage token={token} />} />
+           <Route path="/stats" element={<Stats token={token}></Stats>} />
+        </Route>
       </Routes>
 
       <ToastContainer position="top-right" />

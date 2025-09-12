@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const auth = require('../middleware/auth');
 const User = require('../models/User');
 
 // Register
@@ -43,6 +44,10 @@ router.post('/login', async (req, res) => {
     console.error(err);
     return res.status(500).json({ msg: 'Server error' });
   }
+});
+// verifying token
+router.get("/verify-token", auth, (req, res) => {
+  res.json({ valid: true, user: req.user });
 });
 
 module.exports = router;

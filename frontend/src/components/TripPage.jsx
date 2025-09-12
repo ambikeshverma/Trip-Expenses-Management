@@ -9,6 +9,8 @@ import { toast } from "react-toastify";
 import "./Styles/TripPage.css";
 import AddExpenseForm from "./AddExpenseForm";
 import AddMoneyForm from "./AddMoneyForm";
+import Nav from "./Nav";
+import Footer from "./Footer";
 
 export default function TripPage({ token }) {
   const navigate =useNavigate();
@@ -40,6 +42,8 @@ export default function TripPage({ token }) {
   }, [id, token]);
 
   return (
+    <>
+    <Nav title={"Trips Data"}></Nav>
     <div className="tripSpecificPage">
       <div className="containerPart1">
         <div className="tripPageCard">
@@ -48,16 +52,17 @@ export default function TripPage({ token }) {
           </div>
           <div className="dataCont3">
             <div className="location">
-              <img src="" alt="" />
+              <img src="/src/assets/Location.png" width="20px" alt="" />
               <h4>{trip?.title}</h4>
             </div>
             <div className="tripDate">
-              <img src="" alt="" />
+              <img src="/src/assets/Date.png" width="20px" alt="" />
               <h4>Date Here</h4>
             </div>
           </div>
         </div>
         <div className="notiBox">
+          <h5>Manage notification permission</h5>
           <NotifyPermission tripId={id} token={token} />
         </div>
         <div className="searchBarCont">
@@ -70,9 +75,27 @@ export default function TripPage({ token }) {
           </button>
           <AddExpenseForm refreshTrip={load} tripId={id} token={token} isOpenAddExpenForm={isOpenAddExpenForm} closeExpenseForm={()=>setIsOpenAddExpenForm(false)}></AddExpenseForm>
           <div className="detailCard">
-            <div className="total">Total</div>
-            <div className="ExpenseSum">Summary</div>
-            <div className="Stats" onClick={()=>navigate('/stats')}>Stats</div>
+            <div className="d1 total">
+              <div className="c1">
+                  <img src="/src/assets/Total.png" width="28px" alt="" />
+                  <span>Total</span>
+              </div>
+              <img src="/src/assets/Forward Arrow.png" width="18px" alt="" />
+            </div>
+            <div className="d1 ExpenseSum">
+              <div className="c1">
+                 <img src="/src/assets/Summary.png" width="28px" alt="" />
+                 <span>Summary</span>
+              </div>
+              <img src="/src/assets/Forward Arrow.png" width="18px" alt="" />
+            </div>
+            <div className="d1 Stats" onClick={()=>navigate('/stats')}>
+              <div className="c1">
+                 <img src="/src/assets/Stats.png" width="28px" alt="" />
+                 <span>Stats</span>
+              </div>
+              <img src="/src/assets/Forward Arrow.png" width="18px" alt="" />
+            </div>
           </div>
         </div>
       </div>
@@ -102,39 +125,14 @@ export default function TripPage({ token }) {
 
         <div className="membersCard">
           <h3>Trip Members</h3>
-          <div className="member">Ambikesh Verma</div>
+          <div className="member">
+            <img src="/src/assets/Person.png" width="28px" alt="" />
+            <div>Ambikesh Verma</div>
+          </div>
         </div>
       </div>
-
-
-
-{/* 
-      <h2>{trip?.title}</h2>
-      <h3>Total Balance: ₹{trip?.totalBalance ?? 0}</h3>
-
-      <NotifyPermission tripId={id} token={token} />
-
-      <form onSubmit={submitTx}>
-        <select value={type} onChange={(e) => setType(e.target.value)}>
-          <option value="add">Add</option>
-          <option value="use">Use</option>
-        </select>
-        <input
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-          placeholder="Amount"
-        />
-        <input
-          value={remarks}
-          onChange={(e) => setRemarks(e.target.value)}
-          placeholder="Remarks"
-        />
-        <button type="submit">Submit</button>
-      </form>
-
-      <SearchUser tripId={id} token={token} onMemberAdded={load} />
-      <TransactionsTable tripId={id} token={token} onChange={load} /> */}
-
     </div>
+    <Footer></Footer>
+    </>
   );
 }

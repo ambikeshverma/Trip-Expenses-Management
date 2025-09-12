@@ -4,10 +4,50 @@
     box-sizing: border-box;
 }
 .dashboardPage{
-    width: 100vw;
+    width: 100%;
     min-height: 100vh;
-    background-color: rgb(225, 239, 251);
-    padding: 30px;
+    background-color: #efebe9;
+    /* background-color: rgb(225, 239, 251); */
+    padding:  100px 25px ;
+}
+.tagDiv{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.tag{
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 15px;
+    background-color: #795548;
+    border-radius: 30px;
+    box-shadow: 0px 0px 4px black;
+}
+.tag p{
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+}
+.dashHeading{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.headingPart{
+  display: flex;
+  flex-direction: column;
+}
+.dashHeading h1{
+    font-size: 40px;
+    color: rgb(32, 32, 32);
+}
+.dashHeading h4{
+    color: rgb(68, 68, 68);
 }
 .trip-link {
   text-decoration: none;
@@ -15,12 +55,22 @@
 }
 .tripList{
    display: flex;
-   flex-wrap: wrap;
-   gap: 30px;
+  flex-wrap: wrap;
+  gap: 30px;
 }
+.no-trips {
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 1.2rem;
+  color: #666;
+}
+
 .dashboardData{
     display: flex;
     justify-content: space-around;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid gray;
 }
 .dashdataBox{
     display: flex;
@@ -30,7 +80,6 @@
     gap: 5px;
     width: 250px;
     height: 80px;
-    /* border: 1px solid gray; */
     border-radius: 8px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.59);
     background-color: white;
@@ -52,21 +101,18 @@
     gap: 3px;
     margin: 40px 0px;
     color: rgb(255, 255, 255);
-    border-radius: 10px;
-    padding: 10px 0px;
+    padding: 30px 0px;
     width: 100%;
-    background-color:#1F8952;
+    background-color:#4e342e;
 }
 .tripHeading h4{
     font-size: 13px;
     color: rgba(255, 255, 255, 0.73);
 }
 .createTripbtn{
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 40px;
 }
 .createTripbtn button{
     display: flex;
@@ -81,8 +127,59 @@
     cursor: pointer;
     transition: all ease-in 150ms;
 }
+.createTripbtn button .span3{
+    display: none;
+}
 .createTripbtn button:hover{
     background-color: white;
     color: #9B1357;
     border: 2px solid #9B1357;
+}
+@media(max-width:600px){
+    .dashboardPage{
+        padding: 80px 25px;
+    }
+    .dashHeading{
+        flex-direction: column;
+        gap: 15px;
+    }
+    .headingPart{
+        align-items: center;
+    }
+    .dashboardData{
+        width: 100%;
+        flex-direction: column;
+        gap: 25px;
+    }
+    .dashdataBox{
+        width: 100%;
+        
+    }
+    .createTripbtn{
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+    }
+    .createTripbtn button .span3{
+        display: flex;
+        font-size: 12px;
+    }
+    .createTripbtn button{
+        /* flex-direction: column; */
+        align-items: center;
+        justify-content: center;
+        padding: 11px 16px;
+    }
+    .createTripbtn button span{
+        font-size: 23px;
+    }
+    .createTripbtn button .span2{
+        display: none;
+    }
+    .tripList{
+        gap: 12px;
+    }
+    .trip-link{
+        width: 48%;
+    }
 }

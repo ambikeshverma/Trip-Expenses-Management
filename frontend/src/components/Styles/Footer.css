@@ -8,7 +8,8 @@
     height: 200px;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    padding-top: 10px;
+    gap: 20px;
     justify-content: end;
     align-items: center;
     background-color: rgb(31, 31, 31);
@@ -21,6 +22,12 @@
     align-items: center;
     gap: 10px;
     color: white;
+}
+.socialIcons{
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
 }
 .copyRigth{
     text-align: center;

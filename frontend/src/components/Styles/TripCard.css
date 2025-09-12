@@ -76,3 +76,51 @@
     font-weight: 600;
     cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .cardCont {
+    width: 100%; 
+    border-radius: 5px;
+  }
+  .imageBox{
+    height: auto;
+  }
+
+  .imageBox img {
+    width: 100%; 
+    height: auto;
+  }
+  .tripDate1{
+    top: 6px;
+    right: 6px;
+  }
+  .tripDate1 p{
+    font-size: 12px;
+  }
+  .dataCont {
+    padding: 6px;
+    gap: 5px;
+     align-items: center;
+  }
+  .moneyData{
+    display:none;
+  }
+  .memberBtn{
+    width: 100%;
+    flex-direction: column;
+  }
+  .memberBtn div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .memberBtn div span{
+    font-size: 12px;
+  }
+
+  .memberBtn button {
+    display: none;
+  }
+}
+
+

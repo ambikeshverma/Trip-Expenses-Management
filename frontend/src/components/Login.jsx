@@ -62,7 +62,7 @@ const Login = ({ setToken, setUser }) => {
       setUser(res.data.user);
 
       toast.success("Login Successfully")
-      navigate("/dashboard");
+      navigate("/");
     } catch (err) {
         toast.error(err?.response?.data?.msg || 'Login failed');
     }
@@ -72,7 +72,7 @@ const Login = ({ setToken, setUser }) => {
       <div className="fullPage">
         <div className="regContainer">
           <div className="imageCont">
-            <img src="/src/assets/Regis Logo2.jpeg" alt="" />
+            <img src="/src/assets/Logo transparent.png" width="300px" alt="" />
           </div>
           <div className="formCont">
             <form action="" onSubmit={handleLogin}>
