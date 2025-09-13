@@ -15,7 +15,7 @@ const AddMoneyForm = ({ tripId, token, isOpenAddMoneyForm, closeMoneyForm, refre
     e.preventDefault();
     try {
       await api.post(
-        "http://localhost:3000/api/transactions",
+        "/api/transactions",
         { tripId, type, amount: Number(addMoney), remarks },
         headers
       );

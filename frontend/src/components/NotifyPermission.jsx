@@ -23,7 +23,7 @@ export default function NotifyPermission({ tripId, token }) {
           applicationServerKey: urlBase64ToUint8Array(PUBLIC_VAPID_KEY)
         });
 
-      await api.post('http://localhost:3000/api/subscribe', { tripId, subscription: sub }, { headers: { Authorization: 'Bearer ' + token }});
+      await api.post('/api/subscribe', { tripId, subscription: sub }, { headers: { Authorization: 'Bearer ' + token }});
       toast.success('Subscribed for notifications');
     } catch (err) {
       console.error(err);
@@ -36,7 +36,7 @@ export default function NotifyPermission({ tripId, token }) {
       const reg = await navigator.serviceWorker.ready;
       const s = await reg.pushManager.getSubscription();
       if (s) await s.unsubscribe();
-      await api.delete('http://localhost:3000/api/subscribe/' + tripId, { headers: { Authorization: 'Bearer ' + token }});
+      await api.delete('/api/subscribe/' + tripId, { headers: { Authorization: 'Bearer ' + token }});
       setGranted(false);
       toast.info('Unsubscribed');
     } catch (err) {

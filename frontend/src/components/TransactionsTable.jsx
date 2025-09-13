@@ -12,7 +12,7 @@ export default function TransactionsTable({token}) {
 
   const load = async () => {
     try {
-      const res = await api.get('http://localhost:3000/api/transactions/trip/' + tripId, { headers: { Authorization: 'Bearer ' + token }});
+      const res = await api.get('/api/transactions/trip/' + tripId, { headers: { Authorization: 'Bearer ' + token }});
       setTxs(res.data.transactions);
     } catch (err) {
       console.error(err);
@@ -24,7 +24,7 @@ export default function TransactionsTable({token}) {
 
   const del = async (id) => {
     try {
-      await api.delete('http://localhost:3000/api/transactions/' + id, { headers: { Authorization: 'Bearer ' + token }});
+      await api.delete('/api/transactions/' + id, { headers: { Authorization: 'Bearer ' + token }});
       load();
       toast.success('Deleted');
     } catch (err) {
@@ -50,7 +50,7 @@ export default function TransactionsTable({token}) {
               <td>₹{tx.amount}</td>
               <td>{tx.remarks}</td>
               <td>
-                <button className='editBtn1' onClick={()=>alert('Edit not implemented in simple UI')}>Edit</button>
+                <button className='editBtn1' onClick={()=>toast.error('Currently edit is not available')}>Edit</button>
                 <button className='deleteBtn1' onClick={()=>del(tx._id)}>Delete</button>
               </td>
             </tr>

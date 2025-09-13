@@ -10,6 +10,7 @@ const TransactionCard = ({token}) => {
   const [openDeleteId, setOpenDeleteId] = useState(null);
   const {tripId} = useParams();
    const [txs, setTxs] = useState([]);
+   const [trip, setTrip] = useState("")
 
    //for date formatting
    const formatDate = (dateStr) => {
@@ -29,8 +30,9 @@ const TransactionCard = ({token}) => {
 //to load all transaction
     const load = async () => {
       try {
-        const res = await api.get('http://localhost:3000/api/transactions/trip/' + tripId, { headers: { Authorization: 'Bearer ' + token }});
+        const res = await api.get('/api/transactions/trip/' + tripId, { headers: { Authorization: 'Bearer ' + token }});
         setTxs(res.data.transactions);
+        setTrip(res.data.trip)
       } catch (err) {
         console.error(err);
         toast.error(err.response?.data?.msg||'Failed to load transactions');
@@ -42,7 +44,7 @@ const TransactionCard = ({token}) => {
     //to delete transaction
     const del = async (id) => {
         try {
-          await api.delete('http://localhost:3000/api/transactions/' + id, { headers: { Authorization: 'Bearer ' + token }});
+          await api.delete('/api/transactions/' + id, { headers: { Authorization: 'Bearer ' + token }});
           load();
           toast.success('Deleted');
           setOpenDeleteId(null);
@@ -58,8 +60,8 @@ const TransactionCard = ({token}) => {
     <div className="transactionPage" onClick={()=> setOpenDeleteId(null)}>
       <div className="carContainer">
         <div className="head">
-          <h3>Total Amount</h3>
-          <h3>600</h3>
+          <h3>Current Balance</h3>
+          <h3>{trip.totalBalance}</h3>
         </div>
         <div className="txnList">
            {txs.length === 0 ? (

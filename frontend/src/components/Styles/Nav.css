@@ -18,6 +18,9 @@
 .logo{
     display: flex;
 }
+.navbar h4{
+    color: #014f7c;
+}
 .navbar button{
     padding: 10px 15px;
     background-color: rgb(255, 68, 0);

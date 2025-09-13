@@ -8,12 +8,18 @@ const auth = require('../middleware/auth');
 router.post('/', auth, async (req, res) => {
   try {
     const { title,startDate, endDate, members } = req.body;
+
+    const memberList = members && members.length ? [...members] : [];
+    if (!memberList.includes(String(req.user._id))) {
+      memberList.push(req.user._id);
+    }
+
     const trip = await Trip.create({
       title,
       creator: req.user._id,
       startDate,
       endDate,
-      members: members && members.length ? members : [req.user._id],
+      members: memberList,
       totalBalance: 0
     });
     return res.json(trip);

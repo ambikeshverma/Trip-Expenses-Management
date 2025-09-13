@@ -9,7 +9,7 @@ export default function SearchUser({ tripId, token, onMemberAdded }) {
 
   const search = async () => {
     try {
-      const res = await api.get('http://localhost:3000/api/users/search?q=' + encodeURIComponent(q), { headers: { Authorization: 'Bearer ' + token }});
+      const res = await api.get('/api/users/search?q=' + encodeURIComponent(q), { headers: { Authorization: 'Bearer ' + token }});
       setResults(res.data);
     } catch (err) {
       console.error(err);
@@ -19,7 +19,7 @@ export default function SearchUser({ tripId, token, onMemberAdded }) {
 
   const addMember = async (username) => {
     try {
-      await api.post('http://localhost:3000/api/trips/' + tripId + '/add-member', { username }, { headers: { Authorization: 'Bearer ' + token }});
+      await api.post('/api/trips/' + tripId + '/add-member', { username }, { headers: { Authorization: 'Bearer ' + token }});
       toast.success('Member added');
       onMemberAdded?.();
       setResults([]);

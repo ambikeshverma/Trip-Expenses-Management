@@ -52,7 +52,7 @@ const Register = ({ setToken, setUser }) => {
     
     try {
       const res = await api.post(
-        'http://localhost:3000/api/auth/register',
+        '/api/auth/register',
         {
           username,
           name,

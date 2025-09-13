@@ -15,7 +15,7 @@ const CreateTripForm = ({token}) => {
     const create = async (e) => {
     e.preventDefault();
     try {
-      await api.post('http://localhost:3000/api/trips', { title, startDate, endDate }, { headers: { Authorization: 'Bearer ' + token }});
+      await api.post('/api/trips', { title, startDate, endDate }, { headers: { Authorization: 'Bearer ' + token }});
       setTitle('');
       toast.success('New Trip is created Successfully');
       navigate("/")

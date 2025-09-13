@@ -15,7 +15,7 @@ const AddExpenseForm = ({ tripId, token, isOpenAddExpenForm, closeExpenseForm, r
         e.preventDefault();
         try {
           await api.post(
-            "http://localhost:3000/api/transactions",
+            "/api/transactions",
             { tripId, type, category, amount: Number(useMoneyAmount), remarks },
             headers
           );

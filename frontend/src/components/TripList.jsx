@@ -11,7 +11,7 @@ export default function TripList({ token }) {
   const load = async () => {
     if (!token) return;
     try {
-      const res = await api.get('http://localhost:3000/api/trips', { headers: { Authorization: 'Bearer ' + token }});
+      const res = await api.get('/api/trips', { headers: { Authorization: 'Bearer ' + token }});
       setTrips(res.data);
     } catch (err) {
       console.error(err);
@@ -22,7 +22,7 @@ export default function TripList({ token }) {
   const create = async (e) => {
     e.preventDefault();
     try {
-      await api.post('http://localhost:3000/api/trips', { title }, { headers: { Authorization: 'Bearer ' + token }});
+      await api.post('/api/trips', { title }, { headers: { Authorization: 'Bearer ' + token }});
       setTitle('');
       load();
       toast.success('Trip created');

@@ -1,40 +1,3 @@
-// import React, { useState } from 'react';
-// import api from '../api';
-// import { useNavigate } from 'react-router-dom';
-// import { toast } from 'react-toastify';
-
-// export default function Login({ setToken, setUser }) {
-//   const [username, setUsername] = useState('');
-//   const [password, setPassword] = useState('');
-//   const navigate = useNavigate();
-
-//   const submit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const res = await api.post('http://localhost:3000/api/auth/login', { username, password });
-//       setToken(res.data.token);
-//       setUser(res.data.user);
-//       toast.success('Logged in');
-//       navigate('/');
-//     } catch (err) {
-//       console.error(err);
-//       toast.error(err?.response?.data?.msg || 'Login failed');
-//     }
-//   };
-
-//   return (
-//     <form onSubmit={submit}>
-//       <h3>Login</h3>
-//       <input placeholder="username" value={username} onChange={e=>setUsername(e.target.value)} /><br/>
-//       <input placeholder="password" type="password" value={password} onChange={e=>setPassword(e.target.value)} /><br/>
-//       <button type="submit">Login</button>
-//     </form>
-//   );
-// }
-
-
-
-
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
@@ -57,7 +20,7 @@ const Login = ({ setToken, setUser }) => {
     e.preventDefault();
 
     try {
-      const res = await api.post('http://localhost:3000/api/auth/login', { username, password });
+      const res = await api.post('/api/auth/login', { username, password });
       setToken(res.data.token);
       setUser(res.data.user);
 

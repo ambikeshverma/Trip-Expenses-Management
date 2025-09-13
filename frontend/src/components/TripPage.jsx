@@ -42,7 +42,7 @@ export default function TripPage({ token }) {
   const load = async () => {
     try {
       const res = await api.get(
-        "http://localhost:3000/api/trips/" + id,
+        "/api/trips/" + id,
         headers
       );
       setTrip(res.data);
@@ -93,14 +93,7 @@ export default function TripPage({ token }) {
             <div className="d1 total" onClick={()=>navigate(`/transactions/${id}`)}>
               <div className="c1">
                   <img src="/src/assets/Total.png" width="28px" alt="" />
-                  <span>Total</span>
-              </div>
-              <img src="/src/assets/Forward Arrow.png" width="18px" alt="" />
-            </div>
-            <div className="d1 ExpenseSum" onClick={()=>navigate(`/txnTable/${id}`)} >
-              <div className="c1">
-                 <img src="/src/assets/Summary.png" width="28px" alt="" />
-                 <span>Summary</span>
+                  <span>Transaction History</span>
               </div>
               <img src="/src/assets/Forward Arrow.png" width="18px" alt="" />
             </div>
@@ -108,6 +101,13 @@ export default function TripPage({ token }) {
               <div className="c1">
                  <img src="/src/assets/Stats.png" width="28px" alt="" />
                  <span>Stats</span>
+              </div>
+              <img src="/src/assets/Forward Arrow.png" width="18px" alt="" />
+            </div>
+             <div className="d1 ExpenseSum" onClick={()=>navigate(`/txnTable/${id}`)} >
+              <div className="c1">
+                 <img src="/src/assets/Summary.png" width="28px" alt="" />
+                 <span>Summary</span>
               </div>
               <img src="/src/assets/Forward Arrow.png" width="18px" alt="" />
             </div>
@@ -128,7 +128,7 @@ export default function TripPage({ token }) {
             </div>
           </div>
           <div className="balanceData">
-            <span>Balance</span>
+            <span>Current Balance</span>
             <span className="headData3">₹{trip?.totalBalance ?? 0}</span>
           </div>
           <button onClick={()=>setIsOpenAddMoneyForm(true)}>

@@ -16,7 +16,7 @@ export default function Stats({token }) {
   const load = async () => {
     try {
       const res = await api.get(
-        "http://localhost:3000/api/transactions/trip/" + tripId,
+        "/api/transactions/trip/" + tripId,
         { headers: { Authorization: "Bearer " + token } }
       );
 
