@@ -2,44 +2,84 @@
 import React, { useEffect, useState } from "react";
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
 import { motion } from "framer-motion";
+import api from "../api"; // adjust path to your api instance
 import "./Styles/Stats.css";
+import { useParams } from "react-router-dom";
+import Footer from "./Footer";
+import Nav from "./Nav";
 
-export default function Stats({token}) {
+export default function Stats({token }) {
+  const {tripId} = useParams()
   const [data, setData] = useState([]);
 
-  // Example: Fetch from backend API
-//   useEffect(() => {
-//     fetch("http://localhost:5000/api/categories") // Replace with your API
-//       .then((res) => res.json())
-//       .then((result) => {
-//         const total = result.reduce((sum, item) => sum + item.value, 0);
-//         const formatted = result.map((item) => ({
-//           name: item.category,
-//           value: item.value,
-//           percentage: ((item.value / total) * 100).toFixed(1),
-//         }));
-//         setData(formatted);
-//       });
-//   }, []);
+  const load = async () => {
+    try {
+      const res = await api.get(
+        "http://localhost:3000/api/transactions/trip/" + tripId,
+        { headers: { Authorization: "Bearer " + token } }
+      );
+
+      const txs = res.data.transactions;
+
+      // ✅ Only take "use" transactions with a category
+      const filtered = txs.filter(
+        (item) => item.type === "use" && item.category
+      );
+
+      // ✅ Group by category and sum values
+      const grouped = {};
+      filtered.forEach((item) => {
+        if (!grouped[item.category]) {
+          grouped[item.category] = 0;
+        }
+        grouped[item.category] += item.amount; // change `amount` if your field name is different
+      });
+
+      const total = Object.values(grouped).reduce((a, b) => a + b, 0);
+
+      // ✅ Format data for chart
+      const formatted = Object.entries(grouped).map(([category, value]) => ({
+        name: category,
+        value,
+        percentage: total > 0 ? ((value / total) * 100).toFixed(1) : 0,
+      }));
+
+      setData(formatted);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    if (tripId) load();
+  }, [tripId]);
 
   const COLORS = [
-    "#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0",
-    "#9966FF", "#FF9F40", "#8BC34A", "#E91E63",
+    "#FF6384",
+    "#36A2EB",
+    "#FFCE56",
+    "#4BC0C0",
+    "#9966FF",
+    "#FF9F40",
+    "#8BC34A",
+    "#E91E63",
   ];
 
   return (
+    <>
+    <Nav title={"Stats"}></Nav>
     <div className="chart-container">
       <motion.div
         initial={{ rotate: -180, opacity: 0 }}
         animate={{ rotate: 0, opacity: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
       >
-        <PieChart width={300} height={300}>
+        <PieChart width={320} height={320}>
           <Pie
             data={data}
             cx="50%"
             cy="50%"
-            innerRadius={80}
+            innerRadius={60}
             outerRadius={120}
             fill="#8884d8"
             paddingAngle={3}
@@ -66,11 +106,13 @@ export default function Stats({token}) {
               style={{ backgroundColor: COLORS[index % COLORS.length] }}
             ></div>
             <span className="legend-text">
-              {entry.name}: {entry.percentage}%
+              {entry.name}: ₹{entry.value} ({entry.percentage}%)
             </span>
           </div>
         ))}
       </div>
     </div>
+    <Footer></Footer>
+    </>
   );
 }

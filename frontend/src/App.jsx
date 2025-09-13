@@ -45,7 +45,7 @@ export default function App(){
            <Route path="/transactions/:tripId" element={<TransactionCard token={token}/>} />
            <Route path="/triplist" element={<TripList token={token} />} />
            <Route path="/trips/:id" element={<TripPage token={token} />} />
-           <Route path="/stats" element={<Stats token={token}></Stats>} />
+           <Route path="/stats/:tripId" element={<Stats token={token}></Stats>} />
         </Route>
       </Routes>
 

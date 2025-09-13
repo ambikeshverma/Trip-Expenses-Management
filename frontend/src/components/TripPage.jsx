@@ -104,7 +104,7 @@ export default function TripPage({ token }) {
               </div>
               <img src="/src/assets/Forward Arrow.png" width="18px" alt="" />
             </div>
-            <div className="d1 Stats" onClick={()=>navigate('/stats')}>
+            <div className="d1 Stats" onClick={()=>navigate(`/stats/${id}`)}>
               <div className="c1">
                  <img src="/src/assets/Stats.png" width="28px" alt="" />
                  <span>Stats</span>

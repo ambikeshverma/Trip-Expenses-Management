@@ -33,17 +33,44 @@
     max-height: 600px;
     display: flex;
     flex-direction: column;
-    padding-left: 7px;
-    padding-right: 7px;
-    padding-bottom: 15px;
+    padding: 15px 7px;
     overflow-y: scroll;
 }
 .txnCard{
     width: 100%;
-    border-bottom: 1px solid gray;
     padding: 10px 10px;
     gap: 5px;
+    background: #f5f5f5;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
 }
+
+.txnCard.txn-add {
+  background: #e6f9ec; /* light green */
+  border: 1px solid green;
+}
+
+.txnCard.txn-use {
+  background: #fdecea; /* light red */
+  border: 1px solid red;
+}
+
+/* Amount text */
+.amount {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.amount.add {
+  color: #1b8a3e; /* green */
+}
+
+.amount.use {
+  color: #d32f2f; /* red */
+}
+
+
 .desAmount{
     width: 100%;
     display: flex;
@@ -86,11 +113,11 @@
 .h1{
     font-size: 14px;
     font-weight: bold;
-    color: rgb(79, 79, 79);
+    color: rgb(62, 62, 62);
 }
 .h2{
     font-size: 14px;
-    color: rgb(79, 79, 79);
+    color: rgb(62, 62, 62);
 }
 .deletebutton{
     position: absolute;

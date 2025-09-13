@@ -67,13 +67,13 @@ const TransactionCard = ({token}) => {
     <p className="no-trips">No transaction save yet!</p>
   ) : (
     txs.map((tx) => (
-          <div className="txnCard">
+          <div className={`txnCard ${tx.type === "add" ? "txn-add" : "txn-use"}`}>
              <div className="desAmount">
               <span>
                 <span className='h'>{tx.remarks}</span>
                 <p>{formatDate(tx.date)}</p>
               </span>
-              <span>₹{tx.amount}</span>
+              <span className={`amount ${tx.type === "add" ? "add" : "use"}`}>₹{tx.amount}</span>
              </div>
              <div className="txnCat">
               <span className='h1'>Category :</span>
