@@ -27,7 +27,7 @@ export default function NotifyPermission({ tripId, token }) {
       toast.success('Subscribed for notifications');
     } catch (err) {
       console.error(err);
-      toast.error('Subscribe failed');
+      toast.error(err.response?.data?.msg||'Subscribe failed');
     }
   };
 
@@ -41,7 +41,7 @@ export default function NotifyPermission({ tripId, token }) {
       toast.info('Unsubscribed');
     } catch (err) {
       console.error(err);
-      toast.error('Unsubscribe failed');
+      toast.error(err.response?.data?.msg||'Unsubscribe failed');
     }
   };
 

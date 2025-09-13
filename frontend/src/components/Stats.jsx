@@ -7,6 +7,7 @@ import "./Styles/Stats.css";
 import { useParams } from "react-router-dom";
 import Footer from "./Footer";
 import Nav from "./Nav";
+import { toast } from "react-toastify";
 
 export default function Stats({token }) {
   const {tripId} = useParams()
@@ -47,6 +48,7 @@ export default function Stats({token }) {
       setData(formatted);
     } catch (err) {
       console.error(err);
+      toast.error(err.response?.data?.msg||"Something went wrong!")
     }
   };
 

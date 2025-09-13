@@ -40,11 +40,11 @@ const AddMoneyForm = ({ tripId, token, isOpenAddMoneyForm, closeMoneyForm, refre
             <h2>Contribution Money</h2>
             <form action="" onSubmit={AddMoney}>
                 <label htmlFor="">Enter Total Amount to Deposite</label>
-                <input type="number" placeholder='Amount' value={addMoney} onChange={(e)=>setAddMoney(e.target.value)} />
+                <input type="number" placeholder='Amount' value={addMoney} onChange={(e)=>setAddMoney(e.target.value)} required/>
                 <label htmlFor="">Amount per Person</label>
                 <input type="number" placeholder='Amount/Person' value={personAmount} onChange={(e)=>setPersonAmount(e.target.value)} />
                 <label htmlFor="">Remark</label>
-                <input type="text" placeholder='Something you want' value={remarks} onChange={(e)=>setRemarks(e.target.value)} />
+                <input type="text" placeholder='Something you want' value={remarks} onChange={(e)=>setRemarks(e.target.value)} required/>
                 <button> <span>+</span><span>Add Money</span></button>
             </form>
         </div>

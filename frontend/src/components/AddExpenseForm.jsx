@@ -41,9 +41,9 @@ const AddExpenseForm = ({ tripId, token, isOpenAddExpenForm, closeExpenseForm, r
             <h2>Add Expense</h2>
             <form action="" onSubmit={useMoney}>
                 <label htmlFor="">Enter Amount</label>
-                <input type="number" placeholder='Use Money' value={useMoneyAmount} onChange={(e)=>setUseMoneyAmount(e.target.value)} />
+                <input type="number" placeholder='Use Money' value={useMoneyAmount} onChange={(e)=>setUseMoneyAmount(e.target.value)} required/>
                 <label htmlFor="">Category</label>
-                <select name="" id="" value={category} onChange={(e)=>setCategory(e.target.value)}>
+                <select required name="" id="" value={category} onChange={(e)=>setCategory(e.target.value)}>
                     <option value="">--select category--</option>
                     <option value="Food">Food</option>
                     <option value="Travel">Travel</option>
@@ -54,7 +54,7 @@ const AddExpenseForm = ({ tripId, token, isOpenAddExpenForm, closeExpenseForm, r
                     <option value="Other">Other</option>
                 </select>
                 <label htmlFor="">Remark</label>
-                <input type="text" placeholder='Something you want' value={remarks} onChange={(e)=>setRemarks(e.target.value)} />
+                <input required type="text" placeholder='Something you want' value={remarks} onChange={(e)=>setRemarks(e.target.value)} />
                 <button type='submit' className='ExpenseBtn'> <span>+</span><span>Save Expense</span></button>
             </form>
         </div>

@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import api from '../api';
 import { toast } from 'react-toastify';
+import { useParams } from "react-router-dom";
+import './Styles/TransactionTable.css'
+import Nav from './Nav';
+import Footer from './Footer';
 
-export default function TransactionsTable({ tripId, token, onChange }) {
+export default function TransactionsTable({token}) {
+  const {tripId} = useParams()
   const [txs, setTxs] = useState([]);
 
   const load = async () => {
@@ -11,27 +16,29 @@ export default function TransactionsTable({ tripId, token, onChange }) {
       setTxs(res.data.transactions);
     } catch (err) {
       console.error(err);
-      toast.error('Failed to load transactions');
+      toast.error(err.response?.data?.msg||'Failed to load transactions');
     }
   };
 
-  useEffect(()=>{ if (tripId) load() }, [tripId, onChange]);
+  useEffect(()=>{ if (tripId) load() }, [tripId]);
 
   const del = async (id) => {
     try {
       await api.delete('http://localhost:3000/api/transactions/' + id, { headers: { Authorization: 'Bearer ' + token }});
       load();
-      onChange?.();
       toast.success('Deleted');
     } catch (err) {
       console.error(err);
-      toast.error('Delete failed');
+      toast.error(err.response?.data?.msg||'Delete failed');
     }
   };
 
   return (
-    <div style={{ marginTop: 12 }}>
+    <>
+    <Nav title={"Summary"}></Nav>
+    <div className='tableContainer' >
       <h4>Transactions</h4>
+       <div className="tableWrapper">
       <table>
         <thead><tr><th>Date</th><th>User</th><th>Type</th><th>Amount</th><th>Remarks</th><th>Action</th></tr></thead>
         <tbody>
@@ -43,13 +50,16 @@ export default function TransactionsTable({ tripId, token, onChange }) {
               <td>₹{tx.amount}</td>
               <td>{tx.remarks}</td>
               <td>
-                <button onClick={()=>alert('Edit not implemented in simple UI')}>Edit</button>
-                <button onClick={()=>del(tx._id)}>Delete</button>
+                <button className='editBtn1' onClick={()=>alert('Edit not implemented in simple UI')}>Edit</button>
+                <button className='deleteBtn1' onClick={()=>del(tx._id)}>Delete</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      </div>
     </div>
+    <Footer></Footer>
+    </>
   );
 }

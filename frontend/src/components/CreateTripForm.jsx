@@ -39,6 +39,7 @@ const CreateTripForm = ({token}) => {
                   value={title}
                   placeholder='e.g., Manali,Kashmir'
                   onChange={(e)=>setTitle(e.target.value)}
+                  required
                 />
                 <div className="date">
                     <label htmlFor="">Start date</label>
@@ -46,12 +47,14 @@ const CreateTripForm = ({token}) => {
                     value={startDate}
                     placeholder='dd-mm-yyyy'
                     onChange={(e)=>setStartDate(e.target.value)}
+                    required
                      />
                       <label htmlFor="">End date</label>
                     <input type="date"
                     value={endDate}
                     placeholder='dd-mm-yyyy'
                     onChange={(e)=>setEndDate(e.target.value)}
+                    required
                      />
                 </div>
                 <label htmlFor="">Cover Photo</label>

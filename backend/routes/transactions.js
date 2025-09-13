@@ -16,10 +16,21 @@ router.post('/', auth, async (req, res) => {
     if (!trip) return res.status(404).json({ msg: 'Trip not found' });
     if (!trip.members.some(m => String(m) === String(req.user._id))) return res.status(403).json({ msg: 'Not a member' });
     
-    //  Prevent expense when balance is 0
-     if (type === 'use' && (trip.totalBalance || 0) <= 0) {
-      return res.status(400).json({ msg: 'Your Current balance is zero. Please add money before adding an expense.' });
-    }
+    //  Prevent expense when balance is 0 and also for insuffcient balance
+    const expenseAmount = Number(amount);
+    if (type === 'use') {
+  if ((trip.totalBalance || 0) <= 0) {
+    return res.status(400).json({
+      msg: 'Your current balance is zero. Please add money before adding an expense.'
+    });
+  }
+
+  if (expenseAmount > (trip.totalBalance || 0)) {
+    return res.status(400).json({
+      msg: 'Insufficient balance. You cannot spend more than your current balance.'
+    });
+  }
+}
 
     const tx = await Transaction.create({
       trip: tripId,

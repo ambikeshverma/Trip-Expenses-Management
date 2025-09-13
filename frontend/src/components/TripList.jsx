@@ -15,7 +15,7 @@ export default function TripList({ token }) {
       setTrips(res.data);
     } catch (err) {
       console.error(err);
-      toast.error('Failed to load trips');
+      toast.error(err.response?.data?.msg||'Failed to load trips');
     }
   };
 
@@ -28,7 +28,7 @@ export default function TripList({ token }) {
       toast.success('Trip created');
     } catch (err) {
       console.error(err);
-      toast.error('Create failed');
+      toast.error(err.response?.data?.msg||'Create failed');
     }
   };
 

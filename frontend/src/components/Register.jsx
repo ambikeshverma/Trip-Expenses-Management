@@ -13,29 +13,29 @@ const Register = ({ setToken, setUser }) => {
   const navigate = useNavigate();
 
 
-  // const validateForm = () => {
-  //   if (!name.trim()) {
-  //     toast.error("Name is required");
-  //     return false;
-  //   }
-  //   if (!username.trim()) {
-  //     toast.error("Email is required");
-  //     return false;
-  //   }
-  //   if (!password) {
-  //     toast.error("Password is required");
-  //     return false;
-  //   }
-  //   if (password.length < 6) {
-  //     toast.error("Password must be at least 6 characters long");
-  //     return false;
-  //   }
-  //   if (password !== confirmPassword) {
-  //     toast.error("Passwords do not match");
-  //     return false;
-  //   }
-  //   return true;
-  // };
+  const validateForm = () => {
+    if (!name.trim()) {
+      toast.error("Name is required");
+      return false;
+    }
+    if (!username.trim()) {
+      toast.error("Email is required");
+      return false;
+    }
+    if (!password) {
+      toast.error("Password is required");
+      return false;
+    }
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters long");
+      return false;
+    }
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      return false;
+    }
+    return true;
+  };
 
   const reset = () => {
     setName("");
@@ -46,9 +46,9 @@ const Register = ({ setToken, setUser }) => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    //   if (!validateForm()) {
-    //   return;
-    // }
+      if (!validateForm()) {
+      return;
+    }
     
     try {
       const res = await api.post(

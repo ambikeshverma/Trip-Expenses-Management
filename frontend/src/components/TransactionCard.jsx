@@ -9,7 +9,6 @@ import Footer from './Footer';
 const TransactionCard = ({token}) => {
   const [openDeleteId, setOpenDeleteId] = useState(null);
   const {tripId} = useParams();
-  console.log(tripId)
    const [txs, setTxs] = useState([]);
 
    //for date formatting
@@ -34,7 +33,7 @@ const TransactionCard = ({token}) => {
         setTxs(res.data.transactions);
       } catch (err) {
         console.error(err);
-        toast.error('Failed to load transactions');
+        toast.error(err.response?.data?.msg||'Failed to load transactions');
       }
     };
   

@@ -48,7 +48,7 @@ export default function TripPage({ token }) {
       setTrip(res.data);
     } catch (err) {
       console.error(err);
-      toast.error("Cannot load trip");
+      toast.error(err.response?.data?.msg||"Cannot load trip");
     }
   };
 
@@ -97,7 +97,7 @@ export default function TripPage({ token }) {
               </div>
               <img src="/src/assets/Forward Arrow.png" width="18px" alt="" />
             </div>
-            <div className="d1 ExpenseSum">
+            <div className="d1 ExpenseSum" onClick={()=>navigate(`/txnTable/${id}`)} >
               <div className="c1">
                  <img src="/src/assets/Summary.png" width="28px" alt="" />
                  <span>Summary</span>

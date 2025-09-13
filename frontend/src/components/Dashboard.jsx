@@ -18,8 +18,7 @@ const Dashboard = ({token}) => {
           const res = await api.get('http://localhost:3000/api/trips', { headers: { Authorization: 'Bearer ' + token }});
           setTrips(res.data);
         } catch (err) {
-          console.error(err);
-          toast.error('Failed to load trips');
+          toast.error(err.response?.data?.msg||'Failed to load trips');
         }
       };
     
