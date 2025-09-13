@@ -6,8 +6,15 @@
 .notiPerbtn{
    padding: 7px 20px;
    background-color: #fed6d4;
-   border: 1px solid transparent;
+   border: 2px solid #f7150a;
    font-weight: bold;
    color: black;
    border-radius: 7px;
+   cursor: pointer;
+   transition: all ease 200ms;
+}
+.notiPerbtn:hover{
+    color: #f7150a ;
+    border:2px solid #f7150a;
+    background-color: white;
 }

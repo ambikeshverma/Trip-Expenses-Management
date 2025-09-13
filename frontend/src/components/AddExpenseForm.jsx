@@ -14,10 +14,9 @@ const AddExpenseForm = ({ tripId, token, isOpenAddExpenForm, closeExpenseForm, r
      const useMoney = async (e) => {
         e.preventDefault();
         try {
-            console.log(tripId,type,useMoneyAmount,remarks)
           await api.post(
             "http://localhost:3000/api/transactions",
-            { tripId, type, amount: Number(useMoneyAmount), remarks },
+            { tripId, type, category, amount: Number(useMoneyAmount), remarks },
             headers
           );
           setUseMoneyAmount("")

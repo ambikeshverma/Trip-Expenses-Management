@@ -23,6 +23,9 @@
     gap: 10px;
     color: white;
 }
+.blackFooter p{
+    color: rgba(255, 255, 255, 0.686);
+}
 .socialIcons{
     display: flex;
     gap: 12px;

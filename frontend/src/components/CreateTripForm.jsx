@@ -3,6 +3,8 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
 import './Styles/CreateTripForm.css'
+import Nav from './Nav';
+import Footer from './Footer';
 
 const CreateTripForm = ({token}) => {
   const navigate =useNavigate()
@@ -13,7 +15,7 @@ const CreateTripForm = ({token}) => {
     const create = async (e) => {
     e.preventDefault();
     try {
-      await api.post('http://localhost:3000/api/trips', { title }, { headers: { Authorization: 'Bearer ' + token }});
+      await api.post('http://localhost:3000/api/trips', { title, startDate, endDate }, { headers: { Authorization: 'Bearer ' + token }});
       setTitle('');
       toast.success('New Trip is created Successfully');
       navigate("/")
@@ -23,6 +25,8 @@ const CreateTripForm = ({token}) => {
   };
 
   return (
+    <>
+    <Nav title={"New Trip Creation"}></Nav>
     <div className="background">
     <div className='TripModelOverlay'>
         <div className="tripModel">
@@ -60,6 +64,8 @@ const CreateTripForm = ({token}) => {
         </div>
     </div>
     </div>
+    <Footer></Footer>
+    </>
   )
 }
 

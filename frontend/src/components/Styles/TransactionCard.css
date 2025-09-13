@@ -1,0 +1,109 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.transactionPage{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    background-color: rgb(229, 242, 254);
+    padding: 100px 15px;
+}
+.carContainer{
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: 0px 0px 5px black;
+}
+.head{
+    width: 100%;
+    display: flex;
+    color: rgb(0, 102, 255);
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 2px solid gray;
+}
+.txnList{
+    width: 100%;
+    max-height: 600px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 15px;
+    overflow-y: scroll;
+}
+.txnCard{
+    width: 100%;
+    border-bottom: 1px solid gray;
+    padding: 10px 10px;
+    gap: 5px;
+}
+.desAmount{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5px;
+}
+.desAmount span p{
+    font-size: 12px;
+    color: rgb(105, 105, 105);
+}
+.txnCat{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.expenseBy{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.shareBy{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.shareBy .part1{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.shareBy img{
+    cursor: pointer;
+}
+.h{
+    font-weight: bold;
+}
+.h1{
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(79, 79, 79);
+}
+.h2{
+    font-size: 14px;
+    color: rgb(79, 79, 79);
+}
+.deletebutton{
+    position: absolute;
+    right: 15px;
+    padding: 5px 10px;
+    border: 1px solid red;
+    border-radius: 5px;
+    background-color: rgba(255, 0, 0, 0.127);
+    cursor: pointer;
+    color: red
+}
+@media(max-width:650px){
+    .transactionPage{
+        padding: 60px 25px;
+    }
+}

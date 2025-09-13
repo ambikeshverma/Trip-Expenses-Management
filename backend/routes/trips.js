@@ -7,10 +7,12 @@ const auth = require('../middleware/auth');
 // create trip
 router.post('/', auth, async (req, res) => {
   try {
-    const { title, members } = req.body;
+    const { title,startDate, endDate, members } = req.body;
     const trip = await Trip.create({
       title,
       creator: req.user._id,
+      startDate,
+      endDate,
       members: members && members.length ? members : [req.user._id],
       totalBalance: 0
     });

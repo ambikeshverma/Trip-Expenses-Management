@@ -13,7 +13,7 @@ export default function SearchUser({ tripId, token, onMemberAdded }) {
       setResults(res.data);
     } catch (err) {
       console.error(err);
-      toast.error('Search failed');
+      toast.error(err?.response?.data?.msg ||'Search failed');
     }
   };
 
@@ -22,7 +22,10 @@ export default function SearchUser({ tripId, token, onMemberAdded }) {
       await api.post('http://localhost:3000/api/trips/' + tripId + '/add-member', { username }, { headers: { Authorization: 'Bearer ' + token }});
       toast.success('Member added');
       onMemberAdded?.();
+      setResults([]);
+      setQ('');
     } catch (err) {
+      setResults([]);
       console.error(err);
       toast.error(err?.response?.data?.msg || 'Add failed');
     }

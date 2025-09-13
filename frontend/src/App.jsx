@@ -12,6 +12,7 @@ import Dashboard from './components/Dashboard';
 import CreateTripForm from './components/CreateTripForm';
 import Stats from './components/Stats';
 import Nav from './components/Nav';
+import TransactionCard from './components/TransactionCard';
 
 export default function App(){
   const [token, setToken] = useState(localStorage.getItem('token') || '');
@@ -41,6 +42,7 @@ export default function App(){
         <Route element={<ProtectedRoute token={token}></ProtectedRoute>}> 
            <Route path="/" element={<Dashboard token={token}/>} />
            <Route path="/createTrip" element={<CreateTripForm token={token}/>} />
+           <Route path="/transactions/:tripId" element={<TransactionCard token={token}/>} />
            <Route path="/triplist" element={<TripList token={token} />} />
            <Route path="/trips/:id" element={<TripPage token={token} />} />
            <Route path="/stats" element={<Stats token={token}></Stats>} />

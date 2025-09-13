@@ -23,6 +23,9 @@
     border-radius: 5px;
     background-color: white;
 }
+.tripDate1 p{
+  font-size: 13px;
+}
 .imageBox{
     width: 100%;
     overflow: hidden;
@@ -46,7 +49,7 @@
     padding: 18px;
 }
 .tripTitle{
-    color: rgb(1, 101, 34);
+    color: rgb(141, 67, 32);
 }
 .moneyData{
     width: 100%;
@@ -56,15 +59,36 @@
 }
 .moneyData div{
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 6px;
+}
+.moneyData div .bl1{
+  color: rgb(67, 67, 67);
+}
+.moneyData div .bl{
+  color: green;
+}
+.moneyData div .sp1{
+  color:rgb(67, 67, 67); ;
+}
+.moneyData div .sp{
+  color: red;
 }
 .memberBtn{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .memberBtn div{
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 7px;
+}
+.memberBtn div span{
+  font-size: small;
+  color: rgb(92, 92, 92);
 }
 .memberBtn button{
     padding: 8px 10px;
@@ -92,13 +116,18 @@
   }
   .tripDate1{
     top: 6px;
-    right: 6px;
+    right: 7px;
+    padding-right: 6px;
+    padding-bottom: 3px;
   }
   .tripDate1 p{
-    font-size: 12px;
+    font-size: 9px;
   }
   .dataCont {
-    padding: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 6px;
+    padding-bottom: 8px;
     gap: 5px;
      align-items: center;
   }
@@ -117,7 +146,9 @@
   .memberBtn div span{
     font-size: 12px;
   }
-
+  .memberBtn div img{
+    width: 20px;
+  }
   .memberBtn button {
     display: none;
   }

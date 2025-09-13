@@ -24,6 +24,21 @@ export default function TripPage({ token }) {
 
   const headers = { headers: { Authorization: "Bearer " + token } };
 
+  //to formate date
+   const formatDate = (dateStr) => {
+  const date = new Date(dateStr);
+
+  const day = date.getDate().toString().padStart(2, '0');
+  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const month = monthNames[date.getMonth()];
+  const year = date.getFullYear();
+
+  const pref1 = `${day}-${month}-${year}`; 
+  const pref2 = `${day}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${year}`;
+
+  return `${pref1}`;
+};
+
   const load = async () => {
     try {
       const res = await api.get(
@@ -57,11 +72,11 @@ export default function TripPage({ token }) {
             </div>
             <div className="tripDate">
               <img src="/src/assets/Date.png" width="20px" alt="" />
-              <h4>Date Here</h4>
+              <h4>{formatDate(trip?.createdAt)}</h4>
             </div>
           </div>
         </div>
-        <div className="notiBox">
+        <div className="notiBox1">
           <h5>Manage notification permission</h5>
           <NotifyPermission tripId={id} token={token} />
         </div>
@@ -75,7 +90,7 @@ export default function TripPage({ token }) {
           </button>
           <AddExpenseForm refreshTrip={load} tripId={id} token={token} isOpenAddExpenForm={isOpenAddExpenForm} closeExpenseForm={()=>setIsOpenAddExpenForm(false)}></AddExpenseForm>
           <div className="detailCard">
-            <div className="d1 total">
+            <div className="d1 total" onClick={()=>navigate(`/transactions/${id}`)}>
               <div className="c1">
                   <img src="/src/assets/Total.png" width="28px" alt="" />
                   <span>Total</span>
@@ -103,13 +118,13 @@ export default function TripPage({ token }) {
         <div className="BalanceSum">
           <h3>Balance Summary</h3>
           <div className="sumData">
-            <div className="contriData">
-              <span className="head">Total Contribute</span>
-              <span className="headData1">$ 12,000</span>
+            <div className="contriData1">
+              <span className="head1">Total Contribute</span>
+              <span className="headData1">₹ {trip?.totalContributions ?? 0}</span>
             </div>
             <div className="totalExpenseData">
-              <span className="head">Total Expense</span>
-              <span className="headData2">$ 11,000</span>
+              <span className="head1">Total Expense</span>
+              <span className="headData2">₹ {trip?.totalExpenses ?? 0}</span>
             </div>
           </div>
           <div className="balanceData">
@@ -123,13 +138,22 @@ export default function TripPage({ token }) {
           <AddMoneyForm refreshTrip={load} tripId={id} token={token} isOpenAddMoneyForm={isOpenAddMoneyForm} closeMoneyForm={()=>setIsOpenAddMoneyForm(false)}></AddMoneyForm>
         </div>
 
-        <div className="membersCard">
-          <h3>Trip Members</h3>
-          <div className="member">
-            <img src="/src/assets/Person.png" width="28px" alt="" />
-            <div>Ambikesh Verma</div>
-          </div>
+<div className="membersCard">
+  <h3>Trip Members</h3>
+  {trip?.members && trip?.members.length > 0 ? (
+    trip?.members.map((member) => (
+      <div className="members" key={member?._id}>
+        <img src="/src/assets/Person.png" width="32px" alt="" />
+        <div className="member1">
+          <div>{member?.name}</div>
+          <div className="username1">{member?.username}</div>
         </div>
+      </div>
+    ))
+  ) : (
+    <p>No members found</p>
+  )}
+</div>
       </div>
     </div>
     <Footer></Footer>

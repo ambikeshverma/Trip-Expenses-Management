@@ -9,23 +9,41 @@ const auth = require('../middleware/auth');
 // Create transaction
 router.post('/', auth, async (req, res) => {
   try {
-    const { tripId, type, amount, remarks } = req.body;
+    const { tripId, type, category, amount, remarks } = req.body;
     if (!tripId || !type || amount == null) return res.status(400).json({ msg: 'Missing fields' });
 
     const trip = await Trip.findById(tripId);
     if (!trip) return res.status(404).json({ msg: 'Trip not found' });
     if (!trip.members.some(m => String(m) === String(req.user._id))) return res.status(403).json({ msg: 'Not a member' });
+    
+    //  Prevent expense when balance is 0
+     if (type === 'use' && (trip.totalBalance || 0) <= 0) {
+      return res.status(400).json({ msg: 'Your Current balance is zero. Please add money before adding an expense.' });
+    }
 
     const tx = await Transaction.create({
       trip: tripId,
       user: req.user._id,
       type,
+      category,
       amount,
       remarks
     });
 
-    const delta = (type === 'add') ? Number(amount) : -Math.abs(Number(amount));
-    trip.totalBalance = (trip.totalBalance || 0) + delta;
+    // const delta = (type === 'add') ? Number(amount) : -Math.abs(Number(amount));
+    // trip.totalBalance = (trip.totalBalance || 0) + delta;
+    // await trip.save();
+
+     const amt = Number(amount);
+
+    if (type === 'add') {
+      trip.totalBalance = (trip.totalBalance || 0) + amt;
+      trip.totalContributions = (trip.totalContributions || 0) + amt;
+    } else if (type === 'use') {
+      trip.totalBalance = (trip.totalBalance || 0) - amt;
+      trip.totalExpenses = (trip.totalExpenses || 0) + amt;
+    }
+
     await trip.save();
 
     const payload = {
@@ -66,7 +84,10 @@ router.get('/trip/:tripId', auth, async (req, res) => {
   if (!trip) return res.status(404).json({ msg: 'Trip not found' });
   if (!trip.members.some(m => String(m) === String(req.user._id))) return res.status(403).json({ msg: 'Not a member' });
 
-  const txs = await Transaction.find({ trip: trip._id }).populate('user', 'username name').sort({ date: -1 });
+  const txs = await Transaction.find({ trip: trip._id })
+  .populate('user', 'username name')
+  .populate('trip', 'name startDate endDate totalBalance totalExpense totalContribute')
+  .sort({ date: -1 });
   res.json({ trip, transactions: txs });
 });
 
@@ -87,7 +108,7 @@ router.put('/:id', auth, async (req, res) => {
 router.delete('/:id', auth, async (req, res) => {
   const tx = await Transaction.findById(req.params.id);
   if (!tx) return res.status(404).json({ msg: 'Transaction not found' });
-  await tx.remove();
+  await tx.deleteOne();;
   const tripTxs = await Transaction.find({ trip: tx.trip });
   const newBalance = tripTxs.reduce((acc, t) => acc + (t.type === 'add' ? t.amount : -t.amount), 0);
   await Trip.findByIdAndUpdate(tx.trip, { totalBalance: newBalance });
