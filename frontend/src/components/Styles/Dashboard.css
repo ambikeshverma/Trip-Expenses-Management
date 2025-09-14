@@ -156,21 +156,22 @@
     }
     .createTripbtn{
         position: fixed;
-        bottom: 90px;
+        bottom: 50px;
         right: 20px;
     }
     .createTripbtn button .span3{
         display: flex;
-        font-size: 12px;
+        font-size: 13px;
+        font-weight: bold;
     }
     .createTripbtn button{
         /* flex-direction: column; */
         align-items: center;
         justify-content: center;
-        padding: 11px 16px;
+        padding: 13px 18px;
     }
     .createTripbtn button span{
-        font-size: 23px;
+        font-size: 25px;
     }
     .createTripbtn button .span2{
         display: none;
