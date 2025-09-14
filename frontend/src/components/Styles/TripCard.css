@@ -21,10 +21,11 @@
     gap: 4px;
     padding: 2px 5px;
     border-radius: 5px;
-    background-color: white;
+    backdrop-filter: blur(15px);
 }
 .tripDate1 p{
   font-size: 13px;
+  color: white;
 }
 .imageBox{
     width: 100%;

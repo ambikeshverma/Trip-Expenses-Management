@@ -21,7 +21,7 @@ const TripCard = (props) => {
   return (
     <div className="cardCont">
       <div className="imageBox">
-        <img src="/src/assets/bg3.jpg" alt="" />
+        <img src="/src/assets/Cover3.jpeg" alt="" />
       </div>
       <div className="tripDate1">
         <p>({formatDate(props.startDate)}) - ({formatDate(props.endDate)})</p>
