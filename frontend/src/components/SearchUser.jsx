@@ -35,7 +35,7 @@ export default function SearchUser({ tripId, token, onMemberAdded }) {
     <div className='addMember'>
       <h4>Add members</h4>
       <div className="searchBar">
-          <img src="/src/assets/search.png" alt="" width="25px" height="25px" />
+          <img src="/assets/search.png" alt="" width="25px" height="25px" />
           <input value={q} onChange={e=>setQ(e.target.value)} placeholder="Search username" />
           <button className='searchbtn' onClick={search}>Search</button>
       </div>

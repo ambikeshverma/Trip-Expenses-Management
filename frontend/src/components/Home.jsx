@@ -25,7 +25,7 @@ const Home = () => {
         <div className="points"><span>Mandatory Expense :</span> Logging Every expense must be updated in the app to avoid mismatches later.</div>
         <div className="points"><span>No Trust Issues :</span> Since all members can see transparent records, no one is blamed for differences.</div>
         <div className="points"><span>Final Settlement :</span> At trip end, the app shows total contributions, total expenses, and balance left.</div>
-        <button onClick={()=>navigate('/login')}>Dashboard <span><img src="/src/assets/Arrow.png" width="22px" alt="" /></span></button>
+        <button onClick={()=>navigate('/login')}>Dashboard <span><img src="/assets/Arrow.png" width="22px" alt="" /></span></button>
       </div>
      </div>
      <Footer></Footer>

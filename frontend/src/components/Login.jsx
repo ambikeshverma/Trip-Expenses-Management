@@ -35,7 +35,7 @@ const Login = ({ setToken, setUser }) => {
       <div className="fullPage">
         <div className="regContainer">
           <div className="imageCont">
-            <img src="/src/assets/Logo transparent.png" width="300px" alt="" />
+            <img src="/assets/Logo transparent.png" width="300px" alt="" />
           </div>
           <div className="formCont">
             <form action="" onSubmit={handleLogin}>
@@ -43,11 +43,11 @@ const Login = ({ setToken, setUser }) => {
               <div className="sign">Sign in with Open Account</div>
               <div className="google">
                 <span className="google1">
-                  <img src="/src/assets/Google icon.webp" width="20px" alt="" />
+                  <img src="/assets/Google icon.webp" width="20px" alt="" />
                   <h5>Google</h5>
                 </span>
                 <span className="google1">
-                  <img src="/src/assets/Apple Icon.png" width="20px" alt="" />
+                  <img src="/assets/Apple Icon.png" width="20px" alt="" />
                   <h5>Apple ID</h5>
                 </span>
               </div>

@@ -90,7 +90,7 @@ const TransactionCard = ({token}) => {
                  <span className='h2'>All</span>
               </div>
               <img 
-  src="/src/assets/three dots.png" 
+  src="/assets/three dots.png" 
   width="20px" 
   alt="" 
   onClick={(e) =>{ e.stopPropagation(); setOpenDeleteId(tx._id)}} 

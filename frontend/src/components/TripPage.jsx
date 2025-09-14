@@ -63,15 +63,15 @@ export default function TripPage({ token }) {
       <div className="containerPart1">
         <div className="tripPageCard">
           <div className="tripCoverPhoto">
-            <img src="/src/assets/bg3.jpg" width="700px" alt="" />
+            <img src="/assets/bg3.jpg" width="700px" alt="" />
           </div>
           <div className="dataCont3">
             <div className="location">
-              <img src="/src/assets/Location.png" width="20px" alt="" />
+              <img src="/assets/Location.png" width="20px" alt="" />
               <h4>{trip?.title}</h4>
             </div>
             <div className="tripDate">
-              <img src="/src/assets/Date.png" width="20px" alt="" />
+              <img src="/assets/Date.png" width="20px" alt="" />
               <h4>{formatDate(trip?.createdAt)}</h4>
             </div>
           </div>
@@ -92,24 +92,24 @@ export default function TripPage({ token }) {
           <div className="detailCard">
             <div className="d1 total" onClick={()=>navigate(`/transactions/${id}`)}>
               <div className="c1">
-                  <img src="/src/assets/Total.png" width="28px" alt="" />
+                  <img src="/assets/Total.png" width="28px" alt="" />
                   <span>Transaction History</span>
               </div>
-              <img src="/src/assets/Forward Arrow.png" width="18px" alt="" />
+              <img src="/assets/Forward Arrow.png" width="18px" alt="" />
             </div>
             <div className="d1 Stats" onClick={()=>navigate(`/stats/${id}`)}>
               <div className="c1">
-                 <img src="/src/assets/Stats.png" width="28px" alt="" />
+                 <img src="/assets/Stats.png" width="28px" alt="" />
                  <span>Stats</span>
               </div>
-              <img src="/src/assets/Forward Arrow.png" width="18px" alt="" />
+              <img src="/assets/Forward Arrow.png" width="18px" alt="" />
             </div>
              <div className="d1 ExpenseSum" onClick={()=>navigate(`/txnTable/${id}`)} >
               <div className="c1">
-                 <img src="/src/assets/Summary.png" width="28px" alt="" />
+                 <img src="/assets/Summary.png" width="28px" alt="" />
                  <span>Summary</span>
               </div>
-              <img src="/src/assets/Forward Arrow.png" width="18px" alt="" />
+              <img src="/assets/Forward Arrow.png" width="18px" alt="" />
             </div>
           </div>
         </div>
@@ -143,7 +143,7 @@ export default function TripPage({ token }) {
   {trip?.members && trip?.members.length > 0 ? (
     trip?.members.map((member) => (
       <div className="members" key={member?._id}>
-        <img src="/src/assets/Person.png" width="32px" alt="" />
+        <img src="/assets/Person.png" width="32px" alt="" />
         <div className="member1">
           <div>{member?.name}</div>
           <div className="username1">{member?.username}</div>
