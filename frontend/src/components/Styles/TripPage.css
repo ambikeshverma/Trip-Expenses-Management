@@ -261,6 +261,10 @@
     .containerPart2{
         width: 100%;
     }
+    .BalanceSum{
+        width: 100%;
+        max-width: 370px;
+    }
     .tripSpecificPage{
         flex-direction: column;
     }
