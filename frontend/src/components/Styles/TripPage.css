@@ -255,6 +255,9 @@
     font-weight: 400px;
 }
 @media(max-width:700px){
+    .containerPart1{
+        width: 100%;
+    }
     .containerPart2{
         width: 100%;
     }

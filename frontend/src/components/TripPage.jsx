@@ -63,7 +63,7 @@ export default function TripPage({ token }) {
       <div className="containerPart1">
         <div className="tripPageCard">
           <div className="tripCoverPhoto">
-            <img src="/assets/bg3.jpg" width="700px" alt="" />
+            <img src="/assets/Cover3.jpeg" width="700px" alt="" />
           </div>
           <div className="dataCont3">
             <div className="location">
