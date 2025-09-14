@@ -28,7 +28,7 @@ const Dashboard = ({token}) => {
     <div className='dashboardPage'>
         <div className="tagDiv">
         <div className="tag">
-          <img src="/src/assets/Diary.png" width="18px" alt="" />
+          <img src="/assets/Diary.png" width="18px" alt="" />
           <p>Trusted Digital Diary</p>
         </div>
         </div>
