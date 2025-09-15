@@ -11,6 +11,7 @@ const TransactionCard = ({token}) => {
   const {tripId} = useParams();
    const [txs, setTxs] = useState([]);
    const [trip, setTrip] = useState("")
+   const [loading, setLoading] = useState(true);
 
    //for date formatting
    const formatDate = (dateStr) => {
@@ -51,7 +52,9 @@ const TransactionCard = ({token}) => {
         } catch (err) {
           console.error(err);
           toast.error('Delete failed');
-        }
+        }finally {
+        setLoading(false); 
+      }
       };
 
   return (
@@ -64,11 +67,12 @@ const TransactionCard = ({token}) => {
           <h3>{trip.totalBalance}</h3>
         </div>
         <div className="txnList">
-           {txs.length === 0 ? (
-    <p className="no-trips">No transaction save yet!</p>
-  ) : (
-    txs.map((tx) => (
-          <div className={`txnCard ${tx.type === "add" ? "txn-add" : "txn-use"}`}>
+          {loading ? (
+        <p className="loading">Loading transactions...</p> // while loading
+      ) :txs.length === 0 ? (
+           <p className="no-trips">No transaction save yet!</p>) : (
+                txs.map((tx) => (
+                 <div className={`txnCard ${tx.type === "add" ? "txn-add" : "txn-use"}`}>
              <div className="desAmount">
               <span>
                 <span className='h'>{tx.remarks}</span>

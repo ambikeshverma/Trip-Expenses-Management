@@ -51,7 +51,10 @@ export default function TransactionsTable({token}) {
               <td>{tx.remarks}</td>
               <td>
                 <button className='editBtn1' onClick={()=>toast.error('Currently edit is not available')}>Edit</button>
-                <button className='deleteBtn1' onClick={()=>del(tx._id)}>Delete</button>
+                <button className='deleteBtn1' onClick={()=>
+                 toast.error("Not Authorised to delete history")
+                  // del(tx._id)
+                  }>Delete</button>
               </td>
             </tr>
           ))}
