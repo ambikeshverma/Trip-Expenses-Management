@@ -38,6 +38,8 @@ const TransactionCard = ({token}) => {
       } catch (err) {
         console.error(err);
         toast.error(err.response?.data?.msg||'Failed to load transactions');
+      }finally {
+        setLoading(false); 
       }
     };
   
@@ -53,9 +55,7 @@ const TransactionCard = ({token}) => {
         } catch (err) {
           console.error(err);
           toast.error('Delete failed');
-        }finally {
-        setLoading(false); 
-      }
+        }
       };
 
   return (
