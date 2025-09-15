@@ -101,6 +101,9 @@
     font-weight: 600;
     cursor: pointer;
 }
+.shimmer{
+  background-color: gray;
+}
 
 @media (max-width: 768px) {
   .cardCont {
