@@ -62,7 +62,7 @@ const Dashboard = ({token}) => {
     ))
   )}
 </div>
-        <div className="tripHeading">
+        {/* <div className="tripHeading">
             <h1>Total Trips Data</h1>
             <h4>OverAll amount over the all trips </h4>
         </div>
@@ -79,7 +79,7 @@ const Dashboard = ({token}) => {
                 <h5>Total Expenses</h5>
                 <h2>2410</h2>
             </div>
-        </div>
+        </div> */}
     </div>
     <Footer></Footer>
     </>

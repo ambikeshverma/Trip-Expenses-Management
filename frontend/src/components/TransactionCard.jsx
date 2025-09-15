@@ -97,7 +97,11 @@ const TransactionCard = ({token}) => {
 />
 
 {openDeleteId === tx._id && (
-  <button onClick={(e) =>{ e.stopPropagation(); del(tx._id)} }className='deletebutton'>
+  <button onClick={(e) =>{ e.stopPropagation();
+    toast.error("Not Authorised");  setOpenDeleteId(null);
+  }
+  //  del(tx._id)}
+      }className='deletebutton'>
     Delete
   </button>
 )}
