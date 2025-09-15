@@ -64,7 +64,7 @@
 }
 @media(max-width:600px){
     .cardContShim{
-        width: 148px;
+        width: 48%;
         height: 160px;
     }
     .tripDate1Shim{
