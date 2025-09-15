@@ -158,7 +158,6 @@
         position: fixed;
         bottom: 50px;
         right: 20px;
-        box-shadow: 0px 0px 5px black;
     }
     .createTripbtn button .span3{
         display: flex;
@@ -170,6 +169,7 @@
         align-items: center;
         justify-content: center;
         padding: 13px 18px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.768);
     }
     .createTripbtn button span{
         font-size: 25px;
