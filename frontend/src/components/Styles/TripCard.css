@@ -101,9 +101,6 @@
     font-weight: 600;
     cursor: pointer;
 }
-.shimmer{
-  background-color: gray;
-}
 
 @media (max-width: 768px) {
   .cardCont {
@@ -111,12 +108,13 @@
     border-radius: 5px;
   }
   .imageBox{
-    height: auto;
+    height: 100px;
+    overflow: hidden;
   }
 
   .imageBox img {
     width: 100%; 
-    height: auto;
+    height: 100px;
   }
   .tripDate1{
     top: 6px;
@@ -146,6 +144,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 20px;
   }
   .memberBtn div span{
     font-size: 12px;

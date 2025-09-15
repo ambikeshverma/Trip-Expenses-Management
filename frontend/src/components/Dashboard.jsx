@@ -6,7 +6,7 @@ import api from '../api';
 import TripCard from './TripCard'
 import Footer from './Footer'
 import Nav from './Nav';
-import TripListShimmer from './TripListShimmer';
+import ShimmerTripList from './ShimmerTripList';
 
 const Dashboard = ({token}) => {
     const navigate = useNavigate()
@@ -54,7 +54,7 @@ const Dashboard = ({token}) => {
        </div>
      <div className="tripList">
         {loading ? (
-        <p className="loading"><TripListShimmer></TripListShimmer></p> 
+        <ShimmerTripList></ShimmerTripList> 
       ) :trips.length === 0 ? (
     <p className="no-trips">No trips available. Create one trip by add button bellow to get started!</p>
   ) : (
