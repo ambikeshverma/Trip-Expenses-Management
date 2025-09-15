@@ -9,15 +9,19 @@ import Footer from './Footer';
 export default function TransactionsTable({token}) {
   const {tripId} = useParams()
   const [txs, setTxs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const load = async () => {
+    setLoading(true);
     try {
       const res = await api.get('/api/transactions/trip/' + tripId, { headers: { Authorization: 'Bearer ' + token }});
       setTxs(res.data.transactions);
     } catch (err) {
       console.error(err);
       toast.error(err.response?.data?.msg||'Failed to load transactions');
-    }
+    }finally {
+        setLoading(false); 
+      }
   };
 
   useEffect(()=>{ if (tripId) load() }, [tripId]);
@@ -42,7 +46,11 @@ export default function TransactionsTable({token}) {
       <table>
         <thead><tr><th>Date</th><th>User</th><th>Type</th><th>Amount</th><th>Remarks</th><th>Action</th></tr></thead>
         <tbody>
-          {txs.map(tx => (
+           {loading ? (
+        <p className="loading">Loading transactions...</p> // while loading
+      ) :txs.length === 0 ? (
+           <p className="no-trips">No transaction save yet!</p>) : (
+                txs.map((tx) => (
             <tr key={tx._id}>
               <td>{new Date(tx.date).toLocaleString()}</td>
               <td>{tx.user?.username}</td>
@@ -57,7 +65,8 @@ export default function TransactionsTable({token}) {
                   }>Delete</button>
               </td>
             </tr>
-          ))}
+          ))
+        )}
         </tbody>
       </table>
       </div>
