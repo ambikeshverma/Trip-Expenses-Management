@@ -10,16 +10,20 @@ import Nav from './Nav';
 const Dashboard = ({token}) => {
     const navigate = useNavigate()
     const [trips, setTrips] = useState([]);
+    const [loading, setLoading] = useState(true);
       useEffect(()=>{ load() }, [token]);
     
       const load = async () => {
+        setLoading(true);
         if (!token) return;
         try {
           const res = await api.get('/api/trips', { headers: { Authorization: 'Bearer ' + token }});
           setTrips(res.data);
         } catch (err) {
           toast.error(err.response?.data?.msg||'Failed to load trips');
-        }
+        }finally {
+        setLoading(false); 
+      }
       };
     
   return (
@@ -48,7 +52,9 @@ const Dashboard = ({token}) => {
         </div>
        </div>
      <div className="tripList">
-  {trips.length === 0 ? (
+        {loading ? (
+        <p className="loading">Loading your Trips...</p> 
+      ) :trips.length === 0 ? (
     <p className="no-trips">No trips available. Create one trip by add button bellow to get started!</p>
   ) : (
     trips.map((trip) => (
