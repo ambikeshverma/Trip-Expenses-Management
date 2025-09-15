@@ -10,7 +10,7 @@ const TransactionCard = ({token}) => {
   const [openDeleteId, setOpenDeleteId] = useState(null);
   const {tripId} = useParams();
    const [txs, setTxs] = useState([]);
-   const [trip, setTrip] = useState("")
+   const [trip, setTrip] = useState({})
    const [loading, setLoading] = useState(true);
 
    //for date formatting
@@ -30,6 +30,7 @@ const TransactionCard = ({token}) => {
   
 //to load all transaction
     const load = async () => {
+      setLoading(true);
       try {
         const res = await api.get('/api/transactions/trip/' + tripId, { headers: { Authorization: 'Bearer ' + token }});
         setTxs(res.data.transactions);
