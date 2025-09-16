@@ -5,11 +5,13 @@ import {toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 import api from '../api';
 import "./Styles/Registration.css";
+import Loader from "./Loader";
 const Register = ({ setToken, setUser }) => {
    const [username, setUsername] = useState('');
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
 
@@ -51,6 +53,7 @@ const Register = ({ setToken, setUser }) => {
     }
     
     try {
+      setLoading(true);
       const res = await api.post(
         '/api/auth/register',
         {
@@ -80,7 +83,9 @@ const Register = ({ setToken, setUser }) => {
         error.response?.data?.msg || "Registration failed. Please try again."
       );
     }
-  }
+  }finally {
+        setLoading(false); 
+      }
 };
 
   return (
@@ -145,6 +150,7 @@ const Register = ({ setToken, setUser }) => {
                   }}
                   required
                 />
+                {loading && <Loader></Loader>}
                 <div className="buttons">
                   <button className="cancel" onClick={reset}>Reset</button>
                   <button className="post" type="submit">Register</button>

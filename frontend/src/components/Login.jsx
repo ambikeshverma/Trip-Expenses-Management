@@ -4,10 +4,12 @@ import { useNavigate, Link } from "react-router-dom";
 import api from '../api';
 import './Styles/Registration.css'
 import {toast } from 'react-toastify';
+import Loader from "./Loader";
 
 const Login = ({ setToken, setUser }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   
   const navigate = useNavigate();
 
@@ -20,6 +22,7 @@ const Login = ({ setToken, setUser }) => {
     e.preventDefault();
 
     try {
+      setLoading(true);
       const res = await api.post('/api/auth/login', { username, password });
       setToken(res.data.token);
       setUser(res.data.user);
@@ -28,7 +31,9 @@ const Login = ({ setToken, setUser }) => {
       navigate("/");
     } catch (err) {
         toast.error(err?.response?.data?.msg || 'Login failed');
-    }
+    }finally {
+        setLoading(false); 
+      }
   };
   return (
     <>
@@ -71,7 +76,8 @@ const Login = ({ setToken, setUser }) => {
                   onChange={(e) => {
                     setPassword(e.target.value);
                   }}
-                />
+                /> 
+                {loading && <Loader></Loader>}
                 <div className="buttons">
                   <button className="cancel" onClick={reset}>Reset</button>
                   <button className="post" type="submit" >Login</button>
