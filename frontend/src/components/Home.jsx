@@ -1,11 +1,23 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import api from '../api';
 import Nav from './Nav'
 import './Styles/Home.css'
 import Footer from './Footer'
 
 const Home = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+  const warmUpBackend = async () => {
+    await api.get("/ping").catch(() => {}); 
+  };
+
+  warmUpBackend();
+}, []);
+
+
   return (
     <>
      <Nav title={"Home"}></Nav>

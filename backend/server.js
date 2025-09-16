@@ -15,5 +15,11 @@ app.use('/api/trips', require('./routes/trips'));
 app.use('/api/transactions', require('./routes/transactions'));
 app.use('/api/users', require('./routes/users'));
 
+// route for wakeup backend 
+app.get("/ping", (req, res) => {
+  res.status(200).json({ message: "pong" });
+});
+
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log('Server running on', PORT));
