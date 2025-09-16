@@ -41,6 +41,11 @@ const Login = ({ setToken, setUser }) => {
         <div className="regContainer">
           <div className="imageCont">
             <img src="/assets/Logo transparent.png" width="300px" alt="" />
+            <div className="testCredentials">
+              <h3>Test Credentials</h3>
+              <h4>Username: <span>ambi@gmail.com</span> </h4>
+              <h4>Password: <span>123456</span> </h4>
+            </div>
           </div>
           <div className="formCont">
             <form action="" onSubmit={handleLogin}>
