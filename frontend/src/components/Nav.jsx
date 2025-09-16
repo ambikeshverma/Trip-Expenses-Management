@@ -8,7 +8,7 @@ const Nav = (props) => {
   const handleLogout = ()=>{
     localStorage.removeItem("token");
     toast.success("User Logout Successfully")
-    navigate("/home")
+    navigate("/home",{replace: true})
   }
 
   return (
