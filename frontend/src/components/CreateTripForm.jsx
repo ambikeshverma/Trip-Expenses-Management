@@ -70,7 +70,7 @@ const CreateTripForm = ({token}) => {
                 placeholder='e.g., Group photo'
                 />
                 {loading ? <button disabled style={{cursor:"not-allowed"}} className='tripBtn'> <span><Loader></Loader></span><span>Creating...</span></button> :
-                <button className='tripBtn' type='submit'>Create</button>}
+                <button className='tripBtn' type='submit'><span>+</span><span>Create</span></button>}
 
             </form>
         </div>

@@ -46,6 +46,10 @@
     width: 100%;
     margin-top: 10px;
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
     border-radius: 8px;
     border: 2px solid #E82143;
     background-color: #E82143;

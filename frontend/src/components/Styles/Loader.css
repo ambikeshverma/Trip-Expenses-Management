@@ -5,7 +5,7 @@
   border-radius: 50%;
   width: 35px; /* size */
   height: 35px; /* size */
-  animation: spin 1s ease-in-out infinite;
+  animation: spin 1s ease-out infinite;
   margin: auto; /* centers it inside parent */
 }
 @keyframes spin {
