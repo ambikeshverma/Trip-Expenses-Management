@@ -12,9 +12,11 @@ import { toast } from "react-toastify";
 export default function Stats({token }) {
   const {tripId} = useParams()
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const load = async () => {
     try {
+      setLoading(true);
       const res = await api.get(
         "/api/transactions/trip/" + tripId,
         { headers: { Authorization: "Bearer " + token } }
@@ -44,11 +46,13 @@ export default function Stats({token }) {
         value,
         percentage: total > 0 ? ((value / total) * 100).toFixed(1) : 0,
       }));
-
+      setLoading(false);
       setData(formatted);
     } catch (err) {
       console.error(err);
       toast.error(err.response?.data?.msg||"Something went wrong!")
+    }finally {
+      setLoading(false); 
     }
   };
 
@@ -71,6 +75,7 @@ export default function Stats({token }) {
     <>
     <Nav title={"Stats"}></Nav>
     <div className="chart-container">
+      {loading && <p className="loading">Loading chart...</p>}
       <motion.div
         initial={{ rotate: -180, opacity: 0 }}
         animate={{ rotate: 0, opacity: 1 }}
