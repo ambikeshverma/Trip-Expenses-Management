@@ -53,6 +53,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 10px;
     padding: 9px 0px;
     border-radius: 6px;

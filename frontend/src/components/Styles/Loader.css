@@ -5,11 +5,23 @@
   border-radius: 50%;
   width: 35px;   /* size */
   height: 35px;  /* size */
-  animation: spin 1s linear infinite;
-  margin: auto; /* centers it inside parent */
+  animation: spin 1s linear infinite, pulse 1.5s ease-in-out infinite;
+  margin: auto;
 }
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(52,152,219,0.7); }
+  50% { box-shadow: 0 0 0 10px rgba(52,152,219,0); }
+}
+
+@media(max-width:600px){
+  .loader {
+    width: 25px;  
+    height: 25px; 
+  }
 }
