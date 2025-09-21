@@ -5,23 +5,31 @@ import api from '../api';
 import './Styles/CreateTripForm.css'
 import Nav from './Nav';
 import Footer from './Footer';
+import Loader from './Loader';
 
 const CreateTripForm = ({token}) => {
   const navigate =useNavigate()
     const [title, setTitle] = useState("")
     const [startDate, setStartDate] = useState("")
     const [endDate, setEndDate] = useState("")
+    const [loading, setLoading] = useState(false);
 
     const create = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       await api.post('/api/trips', { title, startDate, endDate }, { headers: { Authorization: 'Bearer ' + token }});
       setTitle('');
+      setStartDate('');
+      setEndDate('');
+      setLoading(false);
       toast.success('New Trip is created Successfully');
       navigate("/")
     } catch (err) {
       toast.error(err?.response?.data?.msg || "Failed to create trip");
-    }
+    }finally {
+        setLoading(false); 
+      }
   };
 
   return (
@@ -61,7 +69,8 @@ const CreateTripForm = ({token}) => {
                 <input type="file" 
                 placeholder='e.g., Group photo'
                 />
-                <button className='tripBtn' type='submit'>Create</button>
+                {loading ? <button disabled style={{cursor:"not-allowed"}} className='tripBtn'> <span><Loader></Loader></span><span>Creating...</span></button> :
+                <button className='tripBtn' type='submit'>Create</button>}
 
             </form>
         </div>

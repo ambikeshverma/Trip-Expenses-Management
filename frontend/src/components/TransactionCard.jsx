@@ -94,22 +94,19 @@ const TransactionCard = ({token}) => {
                  <span className='h1'>Share by :</span>
                  <span className='h2'>All</span>
               </div>
-              <img 
-  src="/assets/three dots.png" 
-  width="20px" 
-  alt="" 
-  onClick={(e) =>{ e.stopPropagation(); setOpenDeleteId(tx._id)}} 
-/>
+              <div className='threeDotImg'>
+                 <img src="/assets/three dots.png" width="20px" alt="" onClick={(e) =>{ e.stopPropagation(); setOpenDeleteId(tx._id)}} /> 
+              </div>
 
-{openDeleteId === tx._id && (
-  <button onClick={(e) =>{ e.stopPropagation();
-    toast.error("Not Authorised");  setOpenDeleteId(null);
-  }
-  //  del(tx._id)}
-      }className='deletebutton'>
-    Delete
-  </button>
-)}
+              {openDeleteId === tx._id && (
+                <button onClick={(e) =>{ e.stopPropagation();
+                   toast.error("Not Authorised");  setOpenDeleteId(null);
+                   }
+                //  del(tx._id)}
+                      }className='deletebutton'>
+                          Delete
+                  </button>
+                  )}
              </div>
           </div>
            ))

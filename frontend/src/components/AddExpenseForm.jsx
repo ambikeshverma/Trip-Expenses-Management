@@ -60,7 +60,7 @@ const AddExpenseForm = ({ tripId, token, isOpenAddExpenForm, closeExpenseForm, r
                 </select>
                 <label htmlFor="">Remark</label>
                 <input required type="text" placeholder='Something you want' value={remarks} onChange={(e)=>setRemarks(e.target.value)} />
-                {loading ? <button disabled className='ExpenseBtn'> <span><Loader></Loader></span><span>Saving...</span></button>:
+                {loading ? <button disabled style={{cursor:"not-allowed"}} className='ExpenseBtn'> <span><Loader></Loader></span><span>Saving...</span></button>:
                 <button type='submit' className='ExpenseBtn'> <span>+</span><span>Save Expense</span></button>}
             </form>
         </div>

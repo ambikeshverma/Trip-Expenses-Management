@@ -104,6 +104,10 @@
   align-items: center;
   gap: 5px;
 }
+.shareBy .threeDotImg{
+   width: 20px;
+   height: 20px;
+}
 .shareBy img{
     cursor: pointer;
 }
