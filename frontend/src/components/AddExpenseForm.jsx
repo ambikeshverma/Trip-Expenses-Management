@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { toast } from 'react-toastify';
 import api from "../api";
 import './Styles/AddExpenForm.css'
+import Loader from './Loader';
 
 
 const AddExpenseForm = ({ tripId, token, isOpenAddExpenForm, closeExpenseForm, refreshTrip}) => {
@@ -9,11 +10,13 @@ const AddExpenseForm = ({ tripId, token, isOpenAddExpenForm, closeExpenseForm, r
     const [category, setCategory] = useState("")
      const [type, setType] = useState("use");
     const [remarks, setRemarks] = useState("")
+    const [loading, setLoading] = useState(false);
     const headers = { headers: { Authorization: "Bearer " + token } };
 
      const useMoney = async (e) => {
         e.preventDefault();
         try {
+          setLoading(true);
           await api.post(
             "/api/transactions",
             { tripId, type, category, amount: Number(useMoneyAmount), remarks },
@@ -29,7 +32,9 @@ const AddExpenseForm = ({ tripId, token, isOpenAddExpenForm, closeExpenseForm, r
           toast.success("Transaction added");
         } catch (err) {
           toast.error(err.response?.data?.msg || "Transaction failed");
-        }
+        }finally {
+        setLoading(false); 
+      }
       };
 
    if(!isOpenAddExpenForm){
@@ -55,7 +60,8 @@ const AddExpenseForm = ({ tripId, token, isOpenAddExpenForm, closeExpenseForm, r
                 </select>
                 <label htmlFor="">Remark</label>
                 <input required type="text" placeholder='Something you want' value={remarks} onChange={(e)=>setRemarks(e.target.value)} />
-                <button type='submit' className='ExpenseBtn'> <span>+</span><span>Save Expense</span></button>
+                {loading ? <button disabled className='ExpenseBtn'> <span><Loader></Loader></span><span>Saving...</span></button>:
+                <button type='submit' className='ExpenseBtn'> <span>+</span><span>Save Expense</span></button>}
             </form>
         </div>
     </div>
