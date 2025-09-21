@@ -5,18 +5,22 @@
   border-radius: 50%;
   width: 35px;   /* size */
   height: 35px;  /* size */
-  animation: spin 1s linear infinite, pulse 1.5s ease-in-out infinite;
   margin: auto;
+   background: conic-gradient(
+    #3498db 0deg,
+    #3498db var(--angle, 30deg),
+    transparent var(--angle, 30deg)
+  );
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #000 0);
+  mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #000 0);
+  animation: borderSweep 1.6s infinite;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(52,152,219,0.7); }
-  50% { box-shadow: 0 0 0 10px rgba(52,152,219,0); }
+@keyframes borderSweep {
+  0%   { --angle: 20deg; }
+  20%  { --angle: 280deg; }   /* sudden fast extend */
+  70%  { --angle: 60deg; }    /* slow compress */
+  100% { --angle: 20deg; }    /* reset */
 }
 
 @media(max-width:600px){
